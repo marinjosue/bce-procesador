@@ -1,0 +1,417 @@
+/* Variables de colores */
+:root {
+    --primary-color: #4361ee;
+    --primary-dark: #3a56d4;
+    --primary-light: #eef1fe;
+    --success-color: #2ecc71;
+    --success-light: #d5f5e3;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    --danger-light: #fdeded;
+    --accent-color: #7209b7;
+    --gray-light: #f7f9fa;
+    --gray-medium: #e0e0e0;
+    --gray-dark: #7f8c8d;
+    --text-color: #2c3e50;  
+    --text-light: #6c757d;
+    --white: #ffffff;
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+    --red-highlight: #525cde;
+}
+
+/* Estilos del contenedor principal */
+.file-uploader {
+    max-width: 700px;
+    margin: 1.5rem auto;
+    border-radius: 16px;
+    padding: 2rem;
+    background: var(--white);
+    box-shadow: var(--shadow-lg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.file-uploader::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+
+/* Encabezado */
+.uploader-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.uploader-header h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.5px;
+}
+
+.uploader-header .subtitle {
+    color: var(--text-light);
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Dropzone */
+.dropzone {
+    border: 2px dashed var(--gray-medium);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    background-color: var(--gray-light);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dropzone-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.dropzone::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-light) 25%, transparent 25%);
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.dropzone-icon {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    background-color: var(--primary-light);
+    width: 60px;
+    height: 3px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.dropzone:hover {
+    border-color: var(--primary-color);
+    background-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.dropzone.active {
+    border-color: var(--success-color);
+    background-color: var(--success-light);
+    transform: scale(1.02);
+}
+
+.dropzone.has-file {
+    border-style: solid;
+    border-color: var(--primary-color);
+    background-color: var(--primary-light);
+}
+
+.file-icon {
+    color: var(--primary-color);
+}
+
+.dropzone-text {
+    max-width: 80%;
+}
+
+.dropzone-text .dropzone-primary {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--text-color);
+}
+
+.dropzone-text .dropzone-secondary {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin: 0;
+}
+
+.file-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.file-formats {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: var(--gray-dark);
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.file-meta-info {
+    background-color: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--primary-dark);
+}
+
+.meta-separator {
+    margin: 0 6px;
+    opacity: 0.8;
+}
+   
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(244, 67, 54, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(244, 67, 54, 0);
+    }
+}
+
+.file-selected {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+
+.remove-file {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(231, 76, 60, 0.1);
+    color: var(--danger-color);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.remove-file:hover {
+    background-color: var(--danger-color);
+    color: white;
+    transform: rotate(90deg);
+}
+
+/* Grid para formularios */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+
+/* Campos del formulario */
+.form-field {
+    margin-bottom: 1.2rem;
+    position: relative;
+}
+
+.form-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+}
+
+/* Removed icon styling */
+
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    padding: 0.85rem 1.2rem;
+    border: 1px solid var(--gray-medium);
+    border-radius: 8px;
+    font-size: 1.05rem;
+    transition: all 0.3s;
+    background-color: var(--white);
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.15);
+}
+
+.form-field input[readonly] {
+    background-color: var(--gray-light);
+    cursor: not-allowed;
+    border: 1px dashed var(--gray-medium);
+}
+
+.form-field textarea {
+    min-height: 90px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* Botón de envío */
+.submit-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s;
+    margin-top: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.submit-button:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    20% {
+        transform: scale(25, 25);
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(40, 40);
+    }
+}
+
+/* Button loading state */
+.submit-button:disabled {
+    position: relative;
+}
+
+.submit-button:disabled::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 25%;
+    margin-top: -10px;
+    margin-left: -10px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s infinite linear;
+    display: none;
+}
+
+.submit-button:hover:not(:disabled):not(.disabled) {
+    background-color: var(--primary-dark);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.submit-button.disabled,
+.submit-button:disabled {
+    background-color: var(--gray-medium);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Animaciones */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .file-uploader {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+        max-width: none;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .uploader-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .dropzone {
+        padding: 2rem 1rem;
+    }
+}
